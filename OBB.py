@@ -91,11 +91,23 @@ def main():
         valasztas = input("Válassz egy műveletet: ")
 
         if valasztas == "1":
+
+            print("\n")
+            print("FOGLALÁS")
+            print("\n")
+
+            for i in szalloda.szobak:
+                
+                print("Szobaszám: "  + str(i.szobaszam))
+
+            print("\n")
             szobaszam = input("Add meg a szobaszámot: ")
+
+            
             datum_str = input("Add meg a foglalás dátumát (YYYY-MM-DD formátumban): ")
             try:
-                datum = datetime.strptime(datum_str, "%Y-%m-%d")
-                if datum < datetime.now():
+                datum = datetime.strptime(datum_str, "%Y-%m-%d").date()
+                if datum < datetime.now().date():
                     print("Csak jövőbeli dátumot lehet megadni!")
                 else:
                     ar = szalloda.foglalas(szobaszam, datum)
@@ -107,13 +119,14 @@ def main():
                 print("Érvénytelen dátum formátum!")
 
         elif valasztas == "2":
-            
-           
+            print("\n")
+            print("LEMONDÁS")
+            print("\n")
             for i in range(len(szalloda.foglalasok)):
                 if i ==0:
                     continue
                 print("Foglaáls szám: " + str(i))
-
+            print("\n")
             foglalas_index = int(input("Add meg a lemondandó foglalás sorszámát: ")) - 1
             if 0 <= foglalas_index < len(szalloda.foglalasok):
                 foglalas = szalloda.foglalasok[foglalas_index]
@@ -125,6 +138,9 @@ def main():
                 print("Érvénytelen sorszám.")
 
         elif valasztas == "3":
+            print("\n")
+            print("FOGLALÁS LISTÁZÁS")
+            print("\n")
             szalloda.listaz_foglalasok()
 
         elif valasztas == "4":
