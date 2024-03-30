@@ -64,9 +64,9 @@ def main():
     szoba1 = EgyagyasSzoba("101", 10000)
     szoba2 = KetagyasSzoba("102", 15000)
     szoba3 = KetagyasSzoba("103", 20000)
-    szoba4 = EgyagyasSzoba("201", 10000)
-    szoba5 = KetagyasSzoba("202", 15000)
-    szoba6 = KetagyasSzoba("203", 20000)
+    szoba4 = EgyagyasSzoba("104", 10000)
+    szoba5 = KetagyasSzoba("105", 15000)
+    szoba6 = KetagyasSzoba("106", 20000)
 
     szalloda = Szalloda("Joci Szálloda")
     szalloda.add_szoba(szoba1)
@@ -81,9 +81,9 @@ def main():
     szalloda.foglalas("103", datetime.now().date() + timedelta(days = 9))
     szalloda.foglalas("102", datetime.now().date() + timedelta(days = 2))
     szalloda.foglalas("101", datetime.now().date() + timedelta(days = 1))
-    szalloda.foglalas("203", datetime.now().date() + timedelta(days = 10))
-    szalloda.foglalas("202", datetime.now().date() + timedelta(days = 20))
-    szalloda.foglalas("201", datetime.now().date() + timedelta(days = 15))
+    szalloda.foglalas("104", datetime.now().date() + timedelta(days = 10))
+    szalloda.foglalas("105", datetime.now().date() + timedelta(days = 20))
+    szalloda.foglalas("106", datetime.now().date() + timedelta(days = 15))
 
     while True:
         
@@ -103,7 +103,10 @@ def main():
             print("\n")
             szobaszam = input("Add meg a szobaszámot: ")
 
-            
+            if szobaszam < "101" or szobaszam > "106" :
+                print("Nincs ilyen szoba!")
+                main()
+             
             datum_str = input("Add meg a foglalás dátumát (YYYY-MM-DD formátumban): ")
             try:
                 datum = datetime.strptime(datum_str, "%Y-%m-%d").date()
