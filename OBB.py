@@ -9,8 +9,8 @@ class Szoba(ABC):
         self.ar = ar
 
     @abstractmethod
-    def tipus(self):
-        pass
+    def tipus(self):4
+
 
 class EgyagyasSzoba(Szoba):
     def __init__(self, szobaszam, ar):
